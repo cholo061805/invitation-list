@@ -1,0 +1,252 @@
+<!-- Vea's birthday website: paste into an Elementor "HTML" widget (set the page to Canvas / Full Width), or open this file in a browser. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap');
+.vb,.vb *{box-sizing:border-box}
+.vb{font-family:'Poppins',Arial,sans-serif;color:#3b2a5a;background:#faf7ff;line-height:1.6;overflow:hidden}
+.vb section{padding:64px 20px}
+.vb .in{max-width:860px;margin:0 auto;text-align:center}
+.vb h1,.vb h2{font-family:'Pacifico',cursive;font-weight:400;margin:0;line-height:1.2}
+.vb h2{font-size:clamp(28px,5vw,40px);color:#8a5cf6;margin-bottom:8px}
+.vb .lead{max-width:540px;margin:0 auto 26px;color:#6b5a8a}
+.vb .btn{display:inline-block;padding:13px 30px;border:0;border-radius:40px;background:#ffe066;color:#4a2a86;font:600 16px 'Poppins',Arial,sans-serif;text-decoration:none;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.2);transition:transform .2s}
+.vb .btn:hover{transform:translateY(-2px) scale(1.04)}
+/* hero */
+.vb .hero{position:relative;min-height:600px;display:flex;align-items:center;color:#fff;background:linear-gradient(135deg,#ff6fb5,#8a5cf6 55%,#3b82f6)}
+.vb .hero .in{position:relative;z-index:2}
+.vb .bl{position:absolute;bottom:-140px;left:var(--x);width:52px;height:66px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--c);opacity:.85;animation:vb-up var(--d) linear infinite;animation-delay:var(--l)}
+.vb .bl:after{content:"";position:absolute;left:50%;top:100%;width:2px;height:60px;background:rgba(255,255,255,.7)}
+@keyframes vb-up{to{transform:translateY(-860px) rotate(8deg)}}
+.vb .tag{display:inline-block;padding:6px 18px;border-radius:30px;background:rgba(255,255,255,.2);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.vb h1{margin:16px 0 4px;font-size:clamp(44px,10vw,92px);text-shadow:0 5px 18px rgba(0,0,0,.25)}
+.vb .nm{font-size:clamp(26px,6vw,46px);font-weight:600;letter-spacing:6px;color:#ffe066}
+.vb .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0 28px}
+.vb .cd div{min-width:78px;padding:12px 8px;border-radius:14px;background:rgba(255,255,255,.2)}
+.vb .cd b{display:block;font-size:28px}
+.vb .cd small{font-size:12px;letter-spacing:2px;text-transform:uppercase}
+/* details */
+.vb .det{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:10px}
+.vb .det div{padding:26px 16px;border-radius:18px;background:#fff;box-shadow:0 10px 26px rgba(80,40,140,.12)}
+.vb .det small{display:block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a78bfa}
+.vb .det b{display:block;margin-top:6px;font-size:18px}
+/* invitation search */
+.vb .find{background:#fff}
+.vb .row{display:flex;gap:10px;max-width:460px;margin:0 auto}
+.vb input,.vb textarea{width:100%;padding:14px 18px;border:2px solid #e3d8fb;border-radius:40px;font:16px 'Poppins',Arial,sans-serif;color:#3b2a5a;background:#fff}
+.vb textarea{border-radius:16px;resize:vertical}
+.vb .row .btn{box-shadow:none;background:#8a5cf6;color:#fff;padding:13px 24px}
+.vb .res{margin-top:24px;min-height:10px}
+.vb .letter{padding:30px 26px;border-radius:18px;background:#faf7ff;text-align:left;border-top:6px solid #8a5cf6;box-shadow:0 12px 30px rgba(80,40,140,.15);animation:vb-in .5s ease}
+.vb .letter h3{margin:0 0 10px;font-family:'Pacifico',cursive;font-weight:400;font-size:28px;color:#8a5cf6}
+.vb .box{margin:14px 0;padding:14px 16px;border-radius:12px;background:#fff}
+.vb .acts{margin-top:16px}
+.vb .acts{display:flex;flex-wrap:wrap;gap:10px}
+.vb .acts .btn{background:#3b82f6;color:#fff;box-shadow:none}
+.vb .acts .btn.mail{background:#ef4444}
+.vb .no{padding:16px;border-radius:14px;background:#fff1f2;color:#9f1239;animation:vb-in .4s ease}
+.vb .list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;max-height:240px;overflow-y:auto;padding:8px}
+.vb .chip{padding:8px 16px;border:2px solid #e3d8fb;border-radius:30px;background:#fff;color:#3b2a5a;font:500 14px 'Poppins',Arial,sans-serif;cursor:pointer;transition:all .2s}
+.vb .chip.on{border-color:#ff6fb5;background:#ff6fb5;color:#fff;transform:scale(1.06)}
+.vb .chip.hide{display:none}
+.vb footer{padding:30px 20px;text-align:center;color:#fff;background:#4a2a86}
+@keyframes vb-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.vb{position:relative}
+.vb .res{position:relative}
+/* confetti */
+.vb .p{position:absolute;top:-14px;width:10px;height:16px;z-index:6;pointer-events:none;animation:vb-fall 3s ease-in forwards}
+@keyframes vb-fall{to{transform:translateY(720px) rotate(720deg);opacity:0}}
+/* glow on the search box after clicking the hero button */
+.vb .row.flash input{animation:vb-glow .9s ease 2}
+@keyframes vb-glow{0%,100%{box-shadow:0 0 0 0 rgba(138,92,246,0)}50%{box-shadow:0 0 0 10px rgba(138,92,246,.35)}}
+/* envelope that opens before the letter */
+.vb .env{position:relative;width:270px;height:176px;margin:14px auto 0;background:#c4b5fd;border-radius:6px 6px 14px 14px;box-shadow:0 14px 30px rgba(80,40,140,.25);animation:vb-in .4s ease}
+.vb .env .paper{position:absolute;left:12%;right:12%;bottom:8%;height:72%;background:#fff;border-radius:6px;z-index:1;animation:vb-paper .6s ease 1s forwards}
+.vb .env .front{position:absolute;inset:0;background:#b3a0fa;clip-path:polygon(0 38%,50% 72%,100% 38%,100% 100%,0 100%);border-radius:0 0 14px 14px;z-index:2}
+.vb .env .flap{position:absolute;top:0;left:0;width:100%;height:62%;background:#8a5cf6;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;z-index:3;animation:vb-flap .7s ease .35s forwards}
+.vb .env .seal{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);z-index:4;font-size:30px;line-height:1;color:#ffe066;animation:vb-seal .3s ease .35s forwards}
+@keyframes vb-flap{to{transform:rotateX(100deg);opacity:0}}
+@keyframes vb-seal{to{opacity:0;transform:translate(-50%,-50%) scale(.3)}}
+@keyframes vb-paper{to{transform:translateY(-52px)}}
+@media (prefers-reduced-motion:reduce){.vb .bl,.vb .p,.vb .env *,.vb .row.flash input{animation:none!important}}
+</style>
+
+<div class="vb" id="vb">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="bl" style="--x:6%;--c:#ffe066;--d:11s;--l:0s"></span>
+    <span class="bl" style="--x:22%;--c:#7dd3fc;--d:14s;--l:2s"></span>
+    <span class="bl" style="--x:40%;--c:#fca5a5;--d:12s;--l:4s"></span>
+    <span class="bl" style="--x:64%;--c:#86efac;--d:13s;--l:1s"></span>
+    <span class="bl" style="--x:80%;--c:#fde68a;--d:10s;--l:3s"></span>
+    <span class="bl" style="--x:92%;--c:#c4b5fd;--d:15s;--l:5s"></span>
+    <div class="in">
+      <span class="tag">You’re invited</span>
+      <h1>Happy Birthday</h1>
+      <div class="nm" id="vbName">VEA</div>
+      <div class="cd" id="vbCd"></div>
+      <a class="btn" id="vbFindBtn" href="#vb-find">Find your invitation</a>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section>
+    <div class="in">
+      <h2>Party Details</h2>
+      <p class="lead">Join us for food, games, and cake as we celebrate Vea!</p>
+      <div class="det">
+        <div><small>Date</small><b id="vbDate"></b></div>
+        <div><small>Time</small><b id="vbTime"></b></div>
+        <div><small>Place</small><b id="vbPlace"></b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITATION SEARCH -->
+  <section class="find" id="vb-find">
+    <div class="in">
+      <h2>Find Your Invitation</h2>
+      <p class="lead">Type your name to see your personal invitation.</p>
+      <div class="row" id="vbRow">
+        <input id="vbIn" type="text" placeholder="Search your name" autocomplete="off">
+        <button class="btn" id="vbGo" type="button">Search</button>
+      </div>
+      <div class="res" id="vbRes" aria-live="polite"></div>
+      <div class="list" id="vbList"></div>
+    </div>
+  </section>
+
+
+  <footer>Made with love for <span id="vbFoot"></span></footer>
+</div>
+
+<script>
+(function(){
+  /* ===== EDIT THESE ===== */
+  var CELEBRANT = "Vea";
+  var PARTY = new Date(2026, 11, 18, 15, 0);        /* year, month-1, day, hour, minute */
+  var DETAILS = { date:"Friday, December 18, 2026", time:"3:00 PM", place:"Butuan City", rsvp:"Please confirm by December 15." };
+  var MESSENGER = "https://m.me/juliaveangvillaver"; /* "" hides the button */
+  var EMAIL = "villavervea@gmail.com";               /* "" hides the button */
+  var GUESTS = ["Carlo Mendez","Maria Lourdes Reyes","Jun Jun","Rico Alvarez","Nilo Castillo","Tessa Dalisay","Oscar Villamor"];
+  /* ====================== */
+
+  function $(id){ return document.getElementById(id); }
+  function clean(s){ return s.toLowerCase().replace(/\s+/g,' ').trim(); }
+  function el(t,c,x){ var e=document.createElement(t); if(c)e.className=c; if(x)e.textContent=x; return e; }
+
+  $('vbName').textContent = CELEBRANT.toUpperCase();
+  $('vbFoot').textContent = CELEBRANT;
+  $('vbDate').textContent = DETAILS.date;
+  $('vbTime').textContent = DETAILS.time;
+  $('vbPlace').textContent = DETAILS.place;
+
+  /* countdown */
+  var cd = $('vbCd');
+  function tick(){
+    var ms = PARTY - new Date();
+    cd.textContent = '';
+    if (ms <= 0) { cd.appendChild(el('div','','Today is the day! Let’s celebrate!')); return; }
+    var d = Math.floor(ms/864e5), h = Math.floor(ms%864e5/36e5), m = Math.floor(ms%36e5/6e4), s = Math.floor(ms%6e4/1e3);
+    [[d,'Days'],[h,'Hours'],[m,'Mins'],[s,'Secs']].forEach(function(p){
+      var box = el('div'); box.appendChild(el('b','',String(p[0]))); box.appendChild(el('small','',p[1])); cd.appendChild(box);
+    });
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* confetti */
+  var cols = ['#ffe066','#7dd3fc','#fca5a5','#86efac','#ffffff','#c4b5fd','#ff6fb5'];
+  function burst(parent, n){
+    for (var i = 0; i < n; i++) {
+      var p = el('span','p');
+      p.style.left = Math.random()*100 + '%';
+      p.style.background = cols[i % cols.length];
+      p.style.animationDelay = (Math.random()*0.6) + 's';
+      p.style.animationDuration = (2.2 + Math.random()*1.4) + 's';
+      parent.appendChild(p);
+      setTimeout((function(x){ return function(){ x.remove(); }; })(p), 4500);
+    }
+  }
+
+  /* hero button: confetti, smooth scroll, glow on the search box */
+  $('vbFindBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    burst(document.querySelector('#vb .hero'), 90);
+    var target = $('vb-find'), row = $('vbRow');
+    setTimeout(function(){
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      row.classList.add('flash');
+      setTimeout(function(){ input.focus({preventScroll:true}); row.classList.remove('flash'); }, 1800);
+    }, 600);
+  });
+
+  /* invitation search */
+  var input = $('vbIn'), res = $('vbRes'), list = $('vbList'), chips = [];
+  function buildLetter(guest){
+    var l = el('div','letter');
+    l.appendChild(el('h3','','Dear ' + guest + ','));
+    l.appendChild(el('div','','You are invited to ' + CELEBRANT + '’s birthday! We would be so happy to celebrate this special day with you.'));
+    var b = el('div','box');
+    b.appendChild(el('div','','Date: ' + DETAILS.date));
+    b.appendChild(el('div','','Time: ' + DETAILS.time));
+    b.appendChild(el('div','','Place: ' + DETAILS.place));
+    l.appendChild(b);
+    l.appendChild(el('div','', DETAILS.rsvp + ' We can’t wait to see you!'));
+    l.appendChild(el('div','','With love, ' + CELEBRANT));
+    if (MESSENGER || EMAIL) {
+      var a = el('div','acts');
+      if (MESSENGER) {
+        var k = el('a','btn','Confirm on Messenger');
+        k.href = MESSENGER; k.target = '_blank'; k.rel = 'noopener';
+        a.appendChild(k);
+      }
+      if (EMAIL) {
+        var m = el('a','btn mail','Confirm by Email');
+        var subject = 'RSVP: ' + guest + ' - ' + CELEBRANT + '’s Birthday';
+        var body = 'Hi ' + CELEBRANT + ',\n\nThis is ' + guest + '. I will attend your birthday on ' + DETAILS.date + ' at ' + DETAILS.place + '.\n\nNumber of people: 1\n';
+        m.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        a.appendChild(m);
+      }
+      l.appendChild(a);
+    }
+    return l;
+  }
+  var token = 0;
+  function letter(guest){
+    var mine = ++token;
+    res.textContent = '';
+    var env = el('div','env');
+    env.appendChild(el('div','paper'));
+    env.appendChild(el('div','front'));
+    env.appendChild(el('div','flap'));
+    env.appendChild(el('div','seal','\u2665'));
+    res.appendChild(env);
+    setTimeout(function(){
+      if (mine !== token) return;
+      res.textContent = '';
+      res.appendChild(buildLetter(guest));
+      burst(res, 50);
+    }, 1900);
+  }
+  function filter(n){ chips.forEach(function(c){ c.el.classList.remove('on'); c.el.classList.toggle('hide', n!=='' && clean(c.n).indexOf(n)===-1); }); }
+  function pick(g){ chips.forEach(function(c){ c.el.classList.toggle('on', c.n===g); c.el.classList.remove('hide'); }); letter(g); }
+  function search(){
+    var n = clean(input.value); if(!n) return;
+    var ex = GUESTS.filter(function(g){ return clean(g)===n; });
+    if (ex.length===1) return pick(ex[0]);
+    var fi = GUESTS.filter(function(g){ return clean(g).split(' ')[0]===n; });
+    if (fi.length===1) return pick(fi[0]);
+    res.textContent = '';
+    if (fi.length>1) { filter(n); res.appendChild(el('div','no','Several guests share that name. Please click your full name below.')); return; }
+    filter(''); res.appendChild(el('div','no','Sorry, we could not find that name. Please check the spelling or ask ' + CELEBRANT + '.'));
+  }
+  GUESTS.slice().sort().forEach(function(n){
+    var b = el('button','chip',n); b.type='button';
+    b.addEventListener('click', function(){ input.value=n; pick(n); });
+    list.appendChild(b); chips.push({n:n, el:b});
+  });
+  input.addEventListener('input', function(){ filter(clean(input.value)); res.textContent=''; });
+  $('vbGo').addEventListener('click', search);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter') search(); });
+
+})();
+</script>
